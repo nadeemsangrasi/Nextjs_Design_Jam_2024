@@ -11,7 +11,24 @@
   height: 60vh;
   position: relative;
 }
+.hero {
+  margin: 66px 0px;
+  background: url("../assets/images/Rectangle 1.png") center bottom no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 60vh;
+  position: relative;
+}
 
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.02);
+}
 .insta-image::before {
   content: "";
   position: absolute;

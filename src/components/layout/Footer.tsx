@@ -21,12 +21,12 @@ export function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#" className="text-sm  font-medium">
+                <Link href="/" className="text-sm  font-medium">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm  font-medium">
+                <Link href="/shop" className="text-sm  font-medium">
                   Shop
                 </Link>
               </li>
@@ -36,7 +36,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm  font-medium">
+                <Link href="/contact" className="text-sm  font-medium">
                   Contact
                 </Link>
               </li>

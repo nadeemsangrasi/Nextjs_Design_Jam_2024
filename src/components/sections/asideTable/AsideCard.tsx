@@ -1,6 +1,6 @@
 import LineHead from "@/components/shared/LineHead";
 import Image from "next/image";
-import Link from "next/link";
+
 import React from "react";
 
 const AsideCard = ({ data }: { data: any }) => {

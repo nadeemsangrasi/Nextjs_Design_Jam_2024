@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import img from "@/assets/images/Asgaard sofa 1.png";
 import Wrapper from "@/components/shared/Wrapper";
+import Link from "next/link";
 const NewArivalSection = () => {
   return (
     <section className="relative bg-custom-light-orange-1 rounded-lg my-16 md:p-12 text-center ">
@@ -18,7 +19,7 @@ const NewArivalSection = () => {
               Asgaard sofa
             </h3>
             <button className="bg-white bg-transparent px-14 py-3 border-black border-2">
-              Order Now
+              <Link href="/shop">Order Now</Link>
             </button>
           </div>
         </div>

@@ -17,14 +17,14 @@ export default function SectionHeader({
         {/* Logo */}
         <Image src={img} alt="img" />
         {/* Title */}
-        <h1 className="text-4xl font-bold ">{label}</h1>
+        <h1 className="text-2xl sm:text-4xl font-bold ">{label}</h1>
         {/* Breadcrumbs */}
         <nav className="flex items-center space-x-2 text-sm">
           <span className=" text-lg">
             <Link href={"/"}>Home</Link>
           </span>
-          <span className="text-2xl">&gt;</span>
-          <span className=" text-lg">
+          <span className="sm:text-2xl">&gt;</span>
+          <span className=" sm:text-lg">
             <Link href={url}>{label}</Link>
           </span>
         </nav>

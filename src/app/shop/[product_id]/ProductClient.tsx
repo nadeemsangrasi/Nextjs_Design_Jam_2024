@@ -1,7 +1,7 @@
 "use client";
 
 import { IProduct } from "@/types/types";
-import { Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -187,6 +187,9 @@ export default function ProductClient({ product }: { product: IProduct }) {
                   </svg>
                 </button>
               </div>
+              <button className="pl-20">
+                <Heart className="w-5 h-5 text-red-500" />{" "}
+              </button>
             </div>
           </div>
         </div>

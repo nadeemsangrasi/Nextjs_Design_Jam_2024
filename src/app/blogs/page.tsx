@@ -1,14 +1,16 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import React from "react";
-import BillingDetails from "./BillingDetails";
+import Blog from "./Blog";
 import FeatureSection from "@/components/shared/FeatureSection";
+import Pagination from "../shop/Pagination";
 
-const CheckoutPage = () => {
+const BlogsPage = () => {
   return (
     <div className=" max-w-screen-2xl mx-auto flex min-h-screen flex-col overflow-hidden">
-      <SectionHeader label="Checkout" url="/checkout" />
+      <SectionHeader label="Blogs" url="/blogs" />
       <div className="mt-28">
-        <BillingDetails />
+        <Blog />
+        <Pagination />
         <div className="pb-8">
           <FeatureSection />
         </div>
@@ -17,4 +19,4 @@ const CheckoutPage = () => {
   );
 };
 
-export default CheckoutPage;
+export default BlogsPage;

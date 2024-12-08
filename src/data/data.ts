@@ -34,7 +34,7 @@ export const icons: IIcons[] = [
 export const links: ILinks[] = [
   { label: "Home", url: "/" },
   { label: "Shop", url: "/shop" },
-  { label: "About", url: "#about" },
+  { label: "Blogs", url: "/blogs" },
   { label: "Contact", url: "/contact" },
 ];
 export const ourtTopData: IProduct[] = [

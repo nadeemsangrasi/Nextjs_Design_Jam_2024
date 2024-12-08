@@ -31,8 +31,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm  font-medium">
-                  About
+                <Link href="/blogs" className="text-sm  font-medium">
+                  Blogs
                 </Link>
               </li>
               <li>

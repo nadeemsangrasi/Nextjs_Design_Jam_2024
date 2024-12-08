@@ -40,7 +40,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-28">
+    <div className="container mx-auto px-4 ">
       <div className="text-center">
         <h1 className="mb-2 text-3xl font-bold md:text-4xl">
           Get In Touch With Us

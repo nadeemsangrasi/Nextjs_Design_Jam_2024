@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Blog = () => {
   return (
-    <div className="  px-4 md:px-8 py-8 mt-20">
+    <div className="  px-4 md:px-8 ">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="md:col-span-3 space-y-8">
           <div className="bg-white  ">

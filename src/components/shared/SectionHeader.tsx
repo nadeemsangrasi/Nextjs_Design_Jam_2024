@@ -11,9 +11,9 @@ export default function SectionHeader({
   url: string;
 }) {
   return (
-    <div className="relative h-[300px] w-full ">
+    <div className="relative w-full ">
       <div className="hero"></div>
-      <div className="flex h-full flex-col items-center justify-center space-y-4 text-black absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-24">
+      <div className="flex h-full flex-col items-center justify-center space-y-4 text-black absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
         {/* Logo */}
         <Image src={img} alt="img" />
         {/* Title */}

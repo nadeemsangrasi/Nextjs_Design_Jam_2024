@@ -7,7 +7,7 @@ const Login = () => {
   const form = useForm();
   return (
     <div className="flex justify-center items-center  flex-wrap">
-      <div className="space-y-4 py-28 px-6 md:px-0 grid grid-flow-col-1 place-content-center md:grid-cols-2 gap-8 w-full max-w-4xl">
+      <div className="space-y-4  px-6 md:px-0 grid grid-flow-col-1 place-content-center md:grid-cols-2 gap-8 w-full max-w-4xl">
         {/* Login */}
         <div>
           <h2 className="text-2xl font-bold mb-6">Log In</h2>

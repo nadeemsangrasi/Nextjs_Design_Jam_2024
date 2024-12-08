@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function CartDetail() {
   return (
     <div className="p-4 md:p-8">
-      <div className="max-w-7xl mx-auto pt-20">
+      <div className="max-w-7xl mx-auto ">
         {/* Cart Section */}
         <div className="flex flex-col md:flex-row md:space-x-8">
           {/* Cart Table */}

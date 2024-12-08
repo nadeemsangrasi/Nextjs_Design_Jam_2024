@@ -8,11 +8,9 @@ const ContactPage = () => {
   return (
     <div className=" max-w-screen-2xl mx-auto flex min-h-screen flex-col overflow-hidden">
       <SectionHeader label="Contact" url="/contact" />
-      <div className="mt-28">
-        <Contact />
-        <div className="pb-8">
-          <FeatureSection />
-        </div>
+      <Contact />
+      <div className="pb-8">
+        <FeatureSection />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { SlidersHorizontal } from "lucide-react";
 export default function FilterBar() {
   return (
-    <div className=" px-4 py-6 bg-pink-50 flex flex-wrap items-center justify-between gap-4 mt-52">
+    <div className=" px-4 py-6 bg-pink-50 flex flex-wrap items-center justify-between gap-4 ">
       {/* Left section */}
       <div className="flex items-center gap-4">
         {/* Filter button */}

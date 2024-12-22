@@ -5,6 +5,7 @@ import Wrapper from "../shared/Wrapper";
 import { IIcons, ILinks } from "@/types/types";
 import { icons, links } from "@/data/data";
 import SideBar from "../shared/SideBar";
+import ShoppingCart from "../shared/CartSideBar";
 
 const Header = () => {
   return (
@@ -25,12 +26,13 @@ const Header = () => {
               </Link>
             ))}
           </nav>
-          <div className="hidden lg:flex items-center  gap-x-[3.3rem]">
+          <div className="hidden lg:flex items-center  gap-x-[3rem]">
             {icons.map((myIcon: IIcons) => (
               <Link key={myIcon.link} href={myIcon.link}>
                 <Image src={myIcon.icon} alt="header-icon" />
               </Link>
             ))}
+            <ShoppingCart />
           </div>
         </header>
       </Wrapper>

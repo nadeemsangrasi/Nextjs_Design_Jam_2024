@@ -21,14 +21,12 @@ import img12 from "@/assets/images/shop/SJP_0825  1.png";
 import icon1 from "@/assets/icons/Vector (1).png";
 import icon2 from "@/assets/icons/Vector (2).png";
 import icon3 from "@/assets/icons/Vector (3).png";
-import icon from "@/assets/icons/Vector.png";
 
 import { IBlog, IIcons, ILinks, IProduct } from "@/types/types";
 export const icons: IIcons[] = [
   { icon: icon3, link: "/account" },
   { icon: icon2, link: "/" },
   { icon: icon1, link: "/" },
-  { icon: icon, link: "/cart" },
 ];
 
 export const links: ILinks[] = [

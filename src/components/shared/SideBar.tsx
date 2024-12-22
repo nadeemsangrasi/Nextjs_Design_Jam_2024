@@ -6,6 +6,7 @@ import { Menu } from "lucide-react";
 import Image from "next/image";
 
 import Link from "next/link";
+import ShoppingCart from "./CartSideBar";
 
 export default function SideBar() {
   return (
@@ -34,6 +35,7 @@ export default function SideBar() {
                 <Image src={myIcon.icon} alt="header-icon" />
               </Link>
             ))}
+            <ShoppingCart />
           </div>
         </div>
       </SheetContent>

@@ -1,10 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { useForm } from "react-hook-form";
 const Login = () => {
   const form = useForm();
+  const router = useRouter();
   return (
     <div className="flex justify-center items-center  flex-wrap">
       <div className="space-y-4  px-6 md:px-0 grid grid-flow-col-1 place-content-center md:grid-cols-2 gap-8 w-full max-w-4xl">
@@ -50,10 +52,14 @@ const Login = () => {
               <Button
                 type="submit"
                 className=" bg-transparent hover:bg-transparent text-black border border-black hover:border-black w-fit py-6 px-16 rounded-lg"
+                onClick={() => router.push("/sign-in")}
               >
                 Log In
               </Button>
-              <Link href="#" className="text-gray-500 hover:underline px-4">
+              <Link
+                href="/sign-in"
+                className="text-gray-500 hover:underline px-4"
+              >
                 Lost Your Password?
               </Link>
             </div>
@@ -88,6 +94,7 @@ const Login = () => {
             <Button
               type="submit"
               className=" bg-transparent hover:bg-transparent text-black border border-black hover:border-black w-fit py-6 px-16 rounded-lg"
+              onClick={() => router.push("/sign-up")}
             >
               Register
             </Button>

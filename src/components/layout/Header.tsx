@@ -6,8 +6,12 @@ import { IIcons, ILinks } from "@/types/types";
 import { icons, links } from "@/data/data";
 import SideBar from "../shared/SideBar";
 import ShoppingCart from "../shared/CartSideBar";
+import { UserButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 
-const Header = () => {
+const Header = async () => {
+  const user = await currentUser();
+
   return (
     <div className="bg-custom-light-orange ">
       <Wrapper>
@@ -15,7 +19,7 @@ const Header = () => {
           <div className="lg:hidden absolute right-0">
             <SideBar />
           </div>
-          <nav className="hidden lg:flex  gap-[5rem]">
+          <nav className="hidden lg:flex  gap-[4rem]">
             {links.map((l: ILinks) => (
               <Link
                 key={l.label}
@@ -25,14 +29,16 @@ const Header = () => {
                 {l.label}
               </Link>
             ))}
+            {!user && <Link href={"/sign-in"}>Sign in</Link>}
           </nav>
-          <div className="hidden lg:flex items-center  gap-x-[3rem]">
+          <div className="hidden lg:flex items-center  gap-x-[2rem]">
             {icons.map((myIcon: IIcons) => (
               <Link key={myIcon.link} href={myIcon.link}>
                 <Image src={myIcon.icon} alt="header-icon" />
               </Link>
             ))}
             <ShoppingCart />
+            <UserButton />
           </div>
         </header>
       </Wrapper>

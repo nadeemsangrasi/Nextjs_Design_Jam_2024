@@ -31,3 +31,9 @@ export interface IBlog {
   date: string;
   image: StaticImageData;
 }
+
+export interface ICartStore {}
+
+export interface ICart {
+  
+}

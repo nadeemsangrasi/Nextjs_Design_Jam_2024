@@ -1,11 +1,18 @@
+"use client";
 import LineHead from "@/components/shared/LineHead";
 import Product from "@/components/shared/Product";
-import Wrapper from "@/components/shared/Wrapper";
-import { ourtTopData } from "@/data/data";
+import { getProductsFromSanity } from "@/lib/FetchProducts";
+
 import { IProduct } from "@/types/types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const RelatedProduct = () => {
+  const [products, setProducts] = useState<IProduct[]>([]);
+  useEffect(() => {
+    getProductsFromSanity().then((data) => {
+      setProducts(data);
+    });
+  }, []);
   return (
     <>
       <div className="text-center space-y-2 py-16">
@@ -15,7 +22,7 @@ const RelatedProduct = () => {
       </div>
       <div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center ">
-          {ourtTopData.map((product: IProduct, index) => (
+          {products.slice(4, 8).map((product: IProduct, index) => (
             <Product key={index} product={product} />
           ))}
         </div>

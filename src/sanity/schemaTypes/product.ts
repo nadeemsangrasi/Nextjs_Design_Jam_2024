@@ -19,7 +19,7 @@ const product = {
       type: "url",
     },
     {
-      name: "price",
+      name: "price",  
       title: "Price",
       type: "number",
     },

@@ -1,14 +1,23 @@
-import { products } from "@/data/data";
 import ProductClient from "./ProductClient";
 import Wrapper from "@/components/shared/Wrapper";
 import ProductDetails from "./ProductDetail";
 import RelatedProduct from "./RelatedProduct";
+import { getProductsFromSanity } from "@/lib/FetchProducts";
+import { IProduct } from "@/types/types";
 
-export const generateStaticParams = () =>
-  products.map((product) => ({ product_id: product.id.toString() }));
-const ProductPage = ({ params }: { params: { product_id: string } }) => {
+export const generateStaticParams = async () => {
+  const products = await getProductsFromSanity();
+  return products.map((product: IProduct) => ({
+    product_id: product._id.toString(),
+  }));
+};
+
+const ProductPage = async ({ params }: { params: { product_id: string } }) => {
+  const products = await getProductsFromSanity();
   const { product_id } = params;
-  const product = products.find((product) => product.id === product_id)!;
+  const product = products.find(
+    (product: IProduct) => product._id === product_id
+  )!;
   return (
     <div>
       <Wrapper>

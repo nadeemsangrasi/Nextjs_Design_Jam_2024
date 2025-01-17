@@ -39,7 +39,7 @@ export const ourtTopData: IProduct[] = [
   {
     id: "1",
     name: "Trenton modular sofa_3",
-    price: "Rs. 25,000.00",
+    price: "200",
     image: tImg1,
     images: [
       { id: "14.1", url: bImg3 },
@@ -47,11 +47,12 @@ export const ourtTopData: IProduct[] = [
     ],
     description: "Durable outdoor sofa set perfect for your garden or balcony.",
     averageRating: "4.6",
+    stock: 10,
   },
   {
     id: "2",
     name: "Granite dining table with dining chair",
-    price: "Rs. 25,000.00",
+    price: "100",
     image: tImg2,
     images: [
       { id: "14.1", url: img2 },
@@ -59,11 +60,12 @@ export const ourtTopData: IProduct[] = [
     ],
     description: "Durable outdoor sofa set perfect for your garden or balcony.",
     averageRating: "4.6",
+    stock: 10,
   },
   {
     id: "3",
     name: "Outdoor bar table and stool",
-    price: "Rs. 25,000.00",
+    price: "500",
     image: tImg3,
     images: [
       { id: "14.1", url: bImg1 },
@@ -71,11 +73,12 @@ export const ourtTopData: IProduct[] = [
     ],
     description: "Durable outdoor sofa set perfect for your garden or balcony.",
     averageRating: "4.6",
+    stock: 10,
   },
   {
     id: "4",
     name: "Plain console with teak mirror",
-    price: "Rs. 25,000.00",
+    price: "400",
     image: tImg4,
     images: [
       { id: "14.1", url: img1 },
@@ -83,6 +86,7 @@ export const ourtTopData: IProduct[] = [
     ],
     description: "Durable outdoor sofa set perfect for your garden or balcony.",
     averageRating: "4.6",
+    stock: 10,
   },
 ];
 
@@ -114,7 +118,7 @@ export const products: IProduct[] = [
   {
     id: "1",
     name: "Twerton Modular Sofa",
-    price: "Rs. 25,000.00",
+    price: "300",
     image: img2,
     images: [
       { id: "1.1", url: img1 },
@@ -122,11 +126,12 @@ export const products: IProduct[] = [
     ],
     description: "Comfortable modular sofa for your living room.",
     averageRating: "4.5",
+    stock: 10,
   },
   {
     id: "2",
     name: "Granite Dining Table with Chairs",
-    price: "Rs. 25,000.00",
+    price: "200",
     image: img3,
     images: [
       { id: "2.1", url: img3 },
@@ -134,11 +139,12 @@ export const products: IProduct[] = [
     ],
     description: "Modern dining table with granite top and matching chairs.",
     averageRating: "4.7",
+    stock: 10,
   },
   {
     id: "3",
     name: "Outdoor Bar Table and Stool",
-    price: "Rs. 15,000.00",
+    price: "900",
     image: img4,
     images: [
       { id: "3.1", url: img4 },
@@ -146,11 +152,12 @@ export const products: IProduct[] = [
     ],
     description: "Perfect for outdoor gatherings and parties.",
     averageRating: "4.6",
+    stock: 10,
   },
   {
     id: "4",
     name: "Plain Console with Teak Mirror",
-    price: "Rs. 20,000.00",
+    price: "600",
     image: img6,
     images: [
       { id: "4.1", url: img6 },
@@ -158,11 +165,12 @@ export const products: IProduct[] = [
     ],
     description: "Elegant console with a teak-framed mirror.",
     averageRating: "4.4",
+    stock: 10,
   },
   {
     id: "5",
     name: "Grain Coffee Table",
-    price: "Rs. 15,000.00",
+    price: "300",
     image: img8,
     images: [
       { id: "5.1", url: img8 },
@@ -170,11 +178,12 @@ export const products: IProduct[] = [
     ],
     description: "Minimalistic coffee table for modern homes.",
     averageRating: "4.3",
+    stock: 10,
   },
   {
     id: "6",
     name: "Kent Coffee Table",
-    price: "Rs. 22,500.00",
+    price: "500",
     image: img10,
     images: [
       { id: "6.1", url: img10 },
@@ -183,11 +192,12 @@ export const products: IProduct[] = [
     ],
     description: "Stylish coffee table with a sleek design.",
     averageRating: "4.8",
+    stock: 10,
   },
   {
     id: "7",
     name: "Outdoor Sofa Set",
-    price: "Rs. 50,000.00",
+    price: "400",
     image: img7,
     images: [
       { id: "7.1", url: img7 },
@@ -195,11 +205,12 @@ export const products: IProduct[] = [
     ],
     description: "Durable outdoor sofa set perfect for your garden or balcony.",
     averageRating: "4.6",
+    stock: 10,
   },
   {
     id: "8",
     name: "Reclaimed Teak Sideboard",
-    price: "Rs. 45,000.00",
+    price: "200",
     image: img9,
     images: [
       { id: "8.1", url: img9 },
@@ -207,11 +218,12 @@ export const products: IProduct[] = [
     ],
     description: "Eco-friendly sideboard made from reclaimed teak.",
     averageRating: "4.7",
+    stock: 10,
   },
   {
     id: "9",
     name: "Round Coffee Table",
-    price: "Rs. 30,000.00",
+    price: "600",
     image: img11,
     images: [
       { id: "9.1", url: img11 },
@@ -219,11 +231,12 @@ export const products: IProduct[] = [
     ],
     description: "Elegant round coffee table to complement your living room.",
     averageRating: "4.6",
+    stock: 10,
   },
   {
     id: "10",
     name: "Maya Sofa Three Seater",
-    price: "Rs. 55,000.00",
+    price: "800",
     image: img6,
     images: [
       { id: "10.1", url: img6 },
@@ -231,5 +244,6 @@ export const products: IProduct[] = [
     ],
     description: "Spacious and comfortable three-seater sofa for family use.",
     averageRating: "4.8",
+    stock: 10,
   },
 ];

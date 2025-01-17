@@ -1,16 +1,23 @@
 "use client";
 
-import { IProduct } from "@/types/types";
+import { useCartStore } from "@/context/store/CartStore";
+import { ICartStore, IProduct } from "@/types/types";
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function ProductClient({ product }: { product: IProduct }) {
+  const { addToCart } = useCartStore() as ICartStore;
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("L");
   const [selectedColor, setSelectedColor] = useState("purple");
   const [quantity, setQuantity] = useState(1);
+  const [images, setImages] = useState([
+    product.imagePath,
+    product.imagePath,
+    product.imagePath,
+  ]);
 
   return (
     <div className="container mx-auto px-4">
@@ -30,7 +37,7 @@ export default function ProductClient({ product }: { product: IProduct }) {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-[100px,2fr,2fr] gap-4">
         <div className="md:space-y-4 flex lg:flex-col overflow-x-auto gap-4 lg:gap-0">
-          {product?.images.map((img, index) => (
+          {images.map((img, index) => (
             <button
               key={index}
               onClick={() => setSelectedImage(index)}
@@ -39,7 +46,7 @@ export default function ProductClient({ product }: { product: IProduct }) {
               }`}
             >
               <Image
-                src={img.url}
+                src={img}
                 alt={`Product view ${index + 1}`}
                 width={100}
                 height={100}
@@ -49,11 +56,13 @@ export default function ProductClient({ product }: { product: IProduct }) {
           ))}
         </div>
         <div className="space-y-4">
-          <div className="aspect-square bg-[#F9F1E7] rounded-lg p-8">
+          <div className="aspect-square bg-[#F9F1E7] rounded-lg p-0">
             <Image
-              src={product?.images[selectedImage].url}
+              src={images[selectedImage]}
               alt="Product view"
-              className="w-full h-full object-contain"
+              className="w-full h-full"
+              height={1000}
+              width={1000}
             />
           </div>
         </div>
@@ -71,11 +80,9 @@ export default function ProductClient({ product }: { product: IProduct }) {
             </div>
             <span className="text-gray-500 text-sm">5 Customer Review</span>
           </div>
-          <div className="text-2xl">Rs. 250,000.00</div>
+          <div className="text-2xl">Rs. {product.price}</div>
           <p className="text-gray-600 text-sm md:text-base">
-            Setting the bar as one of the loudest speakers in its class, the
-            Kilburn is a compact, stout-hearted hero with a well-balanced audio
-            which boasts a clear midrange and extended highs for a sound
+            {product.description}
           </p>
 
           {/* Size Selector */}
@@ -142,7 +149,18 @@ export default function ProductClient({ product }: { product: IProduct }) {
                 +
               </button>
             </div>
-            <button className="px-8 py-2 bg-white text-black border-2 border-black rounded-lg hover:bg-black hover:text-white transition-colors">
+            <button
+              onClick={() => {
+                addToCart({
+                  ...product,
+                  id: product._id,
+                  size: selectedSize,
+                  color: selectedColor,
+                  quantity: quantity,
+                });
+              }}
+              className="px-8 py-2 bg-white text-black border-2 border-black rounded-lg hover:bg-black hover:text-white transition-colors"
+            >
               Add To Cart
             </button>
           </div>
@@ -157,7 +175,7 @@ export default function ProductClient({ product }: { product: IProduct }) {
             <div className="flex gap-2">
               <span className="text-gray-600">Category</span>
               <span>:</span>
-              <span>Sofas</span>
+              <span>{product.category}</span>
             </div>
             <div className="flex gap-2">
               <span className="text-gray-600">Tags</span>

@@ -1,12 +1,14 @@
 import Wrapper from "@/components/shared/Wrapper";
-import { ourtTopData } from "@/data/data";
+
 import { IProduct } from "@/types/types";
 
 import React from "react";
 
 import Product from "@/components/shared/Product";
 import LineHead from "@/components/shared/LineHead";
-const OurTopSection = () => {
+import { getProductsFromSanity } from "@/lib/FetchProducts";
+const OurTopSection = async () => {
+  const products = await getProductsFromSanity();
   return (
     <Wrapper>
       <div className="text-center space-y-2 py-16">
@@ -20,7 +22,7 @@ const OurTopSection = () => {
       </div>
       <div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center ">
-          {ourtTopData.map((product: IProduct, index) => (
+          {products.slice(4, 8).map((product: IProduct, index: number) => (
             <Product key={index} product={product} />
           ))}
         </div>

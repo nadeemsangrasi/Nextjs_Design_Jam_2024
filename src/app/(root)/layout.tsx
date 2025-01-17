@@ -4,6 +4,8 @@ import "../globals.css";
 import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
+import CartStore from "@/context/store/CartStore";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   weight: "400",
@@ -22,13 +24,16 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={`${poppins.className} relative`}>
-          <Header />
-          {children}
-          <Footer />
-        </body>
-      </html>
+      <CartStore>
+        <html lang="en">
+          <body className={`${poppins.className} relative`}>
+            <Header />
+            {children}
+            <Footer />
+            <Toaster />
+          </body>
+        </html>
+      </CartStore>
     </ClerkProvider>
   );
 }

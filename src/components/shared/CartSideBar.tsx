@@ -3,21 +3,25 @@ import React, { useState } from "react";
 import icon from "@/assets/icons/Vector.png";
 import Image from "next/image";
 import Link from "next/link";
-import img from "@/assets/images/shop/Maya sofa three seater 1.png";
+
+import { useCartStore } from "@/context/store/CartStore";
+import { ICart, ICartStore } from "@/types/types";
 function ShoppingCart() {
   const [isCartVisible, setIsCartVisible] = useState(false);
+  const { cart, totalAmount, removeFromCart } = useCartStore() as ICartStore;
 
   const toggleCart = () => {
     setIsCartVisible(!isCartVisible);
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-[99]">
       <button
         onClick={toggleCart}
-        className="text-black p-2 hover:bg-gray-200 rounded"
+        className="text-black p-2 hover:bg-gray-200 rounded flex items-center justify-center gap-2"
         aria-label="Toggle Shopping Cart"
       >
+        <span className="text-xl font-bold">{cart.length}</span>
         <Image src={icon} alt="image cart" />
       </button>
 
@@ -32,27 +36,36 @@ function ShoppingCart() {
             <hr />
 
             <div className="space-y-4">
-              <div className="flex justify-between items-center">
-                <div className="flex">
-                  <Image
-                    src={img}
-                    height={150}
-                    width={150}
-                    alt="Asgaard Sofa"
-                    className="object-cover"
-                  />
-                  <div className="ml-4">
-                    <h3 className="mt-8 font-medium">Asgaard Sofa</h3>
-                    <p className="my-2">
-                      1 x{" "}
-                      <span className="text-yellow-600">Rs. 250.000.00</span>
-                    </p>
+              {cart.map((c: ICart) => (
+                <div className="flex justify-between items-center" key={c.id}>
+                  <div className="flex">
+                    <Image
+                      src={c.productImage}
+                      height={150}
+                      width={150}
+                      alt="Asgaard Sofa"
+                      className="object-cover"
+                    />
+                    <div className="ml-4">
+                      <h3 className="mt-8 font-medium">{c.productTitle}</h3>
+                      <p className="my-2">
+                        1 x{" "}
+                        <span className="text-yellow-600">
+                          {c.productPrice}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="bg-gray-400 h-[22px] -mt-6  w-[26px] text-white rounded-full flex justify-center items-center cursor-pointer">
+                    <span
+                      className="p-0.5  font-medium"
+                      onClick={() => removeFromCart(c.id)}
+                    >
+                      x
+                    </span>
                   </div>
                 </div>
-                <div className="bg-gray-500 h-[30px] w-[30px] text-white rounded-full flex justify-center items-center cursor-pointer">
-                  <span className="p-0.5 text-xl font-medium">x</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -60,7 +73,7 @@ function ShoppingCart() {
             <div className="flex justify-between">
               <p>Subtotal</p>
               <p className="ml-8 my-2">
-                <span className="text-yellow-600">Rs. 250.000.00</span>
+                <span className="text-yellow-600">${totalAmount}</span>
               </p>
             </div>
             <hr />

@@ -1,3 +1,4 @@
+import { products } from "./../data/data";
 import { StaticImageData } from "next/image";
 
 export interface IIcons {
@@ -14,14 +15,15 @@ interface IProductImage {
 }
 
 export interface IProduct {
-  id: string;
+  _id: string;
   name: string;
+  imagePath: string;
   price: string;
-  image: StaticImageData;
-  price: string;
-  images: IProductImage[];
   description: string;
-  averageRating: string;
+  discountPercentage: string;
+  isFeaturedProduct: boolean;
+  stockLevel: number;
+  category: string;
 }
 
 export interface IBlog {
@@ -32,8 +34,37 @@ export interface IBlog {
   image: StaticImageData;
 }
 
-export interface ICartStore {}
+export interface ICartStore {
+  cart: ICart[];
+  addToCart: (newItem: {
+    id: string;
+    name: string;
+    imagePath: string;
+    price: string;
+    description: string;
+    discountPercentage: string;
+    isFeaturedProduct: boolean;
+    stockLevel: number;
+    category: string;
+    color: string;
+    size: string;
+    quantity: number;
+  }) => void;
+  removeFromCart: (itemId: string) => void;
+  totalAmount: number;
+  handleCartIncrement: (id: string) => void;
+  handleCartDecrement: (id: string) => void;
+}
 
 export interface ICart {
-  
+  id: string;
+  userId: string;
+  productId: string;
+  productTitle: string;
+  productImage: string;
+  productPrice: number;
+  quantity: number;
+  productStock: number;
+  productSize: string;
+  productColor: string;
 }

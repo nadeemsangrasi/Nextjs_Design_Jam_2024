@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
@@ -6,11 +7,10 @@ import { IIcons, ILinks } from "@/types/types";
 import { icons, links } from "@/data/data";
 import SideBar from "../shared/SideBar";
 import ShoppingCart from "../shared/CartSideBar";
-import { UserButton } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
+import { UserButton, useUser } from "@clerk/nextjs";
 
-const Header = async () => {
-  const user = await currentUser();
+const Header = () => {
+  const { isSignedIn } = useUser();
 
   return (
     <div className="bg-custom-light-orange ">
@@ -29,7 +29,7 @@ const Header = async () => {
                 {l.label}
               </Link>
             ))}
-            {!user && <Link href={"/sign-in"}>Sign in</Link>}
+            {!isSignedIn && <Link href={"/sign-in"}>Sign in</Link>}
           </nav>
           <div className="hidden lg:flex items-center  gap-x-[2rem]">
             {icons.map((myIcon: IIcons) => (

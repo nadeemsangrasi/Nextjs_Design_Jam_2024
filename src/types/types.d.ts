@@ -50,6 +50,7 @@ export interface ICartStore {
     color: string;
     size: string;
     quantity: number;
+    images: { url: string }[];
   }) => void;
   removeFromCart: (itemId: string) => void;
   totalAmount: number;

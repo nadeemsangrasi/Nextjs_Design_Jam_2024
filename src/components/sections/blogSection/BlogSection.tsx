@@ -1,8 +1,17 @@
-import { blogData } from "@/data/data";
-import { IBlog } from "@/types/types";
+"use client";
+
+import { IBlogPost } from "@/types/types";
 import LineHead from "@/components/shared/LineHead";
 import BlogCard from "@/components/shared/BlogCard";
+import { useEffect, useState } from "react";
+import { getBlogsFromSanity } from "@/lib/FetchBlogs";
 export default function BlogSection() {
+  const [blogs, setBlogs] = useState<IBlogPost[]>([]);
+  useEffect(() => {
+    getBlogsFromSanity().then((data) => {
+      setBlogs(data);
+    });
+  }, []);
   return (
     <section className=" px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
@@ -15,8 +24,8 @@ export default function BlogSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogData.map((blog: IBlog) => (
-            <BlogCard key={blog.id} blog={blog} />
+          {blogs.map((blog: IBlogPost) => (
+            <BlogCard key={blog._id} blog={blog} />
           ))}
         </div>
         <div className="mt-10">

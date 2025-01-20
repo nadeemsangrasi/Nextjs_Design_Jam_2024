@@ -1,48 +1,47 @@
 "use client";
 import React, { useState } from "react";
-import icon from "@/assets/icons/Vector.png";
+import icon from "@/assets/icons/Vector (1).png";
 import Image from "next/image";
 import Link from "next/link";
 
 import { useCartStore } from "@/context/store/CartStore";
-import { ICart, ICartStore } from "@/types/types";
-function ShoppingCart() {
-  const [isCartVisible, setIsCartVisible] = useState(false);
-  const { cart, totalAmount, removeFromCart } = useCartStore() as ICartStore;
+import { ICartStore, IWishList } from "@/types/types";
+function WishList() {
+  const [isWishListVisible, setIsWishListVisible] = useState(false);
+  const { wishList, removeFromWishList } = useCartStore() as ICartStore;
 
-  const toggleCart = () => {
-    setIsCartVisible(!isCartVisible);
+  const toggleWishList = () => {
+    setIsWishListVisible(!isWishListVisible);
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <button
-        onClick={toggleCart}
+        onClick={toggleWishList}
         className="text-black p-2 hover:bg-gray-200 rounded flex items-center justify-center gap-2"
         aria-label="Toggle Shopping Cart"
       >
-        <span className="text-xl font-bold">{cart.length}</span>
+        <span className="text-xl font-bold">{wishList.length}</span>
         <Image src={icon} alt="image cart" />
       </button>
 
       <div
         className={`z-[100] fixed top-0 right-0 h-[500px] py-4 bg-white shadow-lg transition-transform duration-300 ${
-          isCartVisible ? "translate-x-0" : "translate-x-full"
+          isWishListVisible ? "translate-x-0" : "translate-x-full"
         } w-[330px] md:w-[420px]`}
       >
         <div className="p-4 overflow-y-auto h-full flex flex-col justify-between">
           <div>
-            <h2 className="text-xl font-bold mb-4">Shopping Cart</h2>
+            <h2 className="text-xl font-bold mb-4">WishList</h2>
             <hr />
-
             <div className="space-y-4">
-              {cart.map((c: ICart) => (
+              {wishList.map((c: IWishList) => (
                 <div className="flex justify-between items-center" key={c.id}>
                   <div className="flex">
                     <Image
                       src={c.productImage}
-                      height={150}
-                      width={150}
+                      height={1000}
+                      width={1000}
                       alt="Asgaard Sofa"
                       className="w-[100px] h-[100px] object-center"
                     />
@@ -59,7 +58,7 @@ function ShoppingCart() {
                   <div className="bg-gray-400 h-[22px] -mt-6  w-[26px] text-white rounded-full flex justify-center items-center cursor-pointer">
                     <span
                       className="p-0.5  font-medium"
-                      onClick={() => removeFromCart(c.id)}
+                      onClick={() => removeFromWishList(c.id)}
                     >
                       x
                     </span>
@@ -69,29 +68,15 @@ function ShoppingCart() {
             </div>
           </div>
 
-          <div className="mt-auto">
-            <div className="flex justify-between">
-              <p>Subtotal</p>
-              <p className="ml-8 my-2">
-                <span className="text-yellow-600">${totalAmount}</span>
-              </p>
-            </div>
-            <hr />
-            <div className="mt-4 flex justify-around mx-auto gap-4">
-              <Link href="/cart">
-                <button className="rounded-full text-black  bg-white  px-8 py-2 border border-black">
-                  View Cart
-                </button>
-              </Link>
-              <Link href="/checkout">
-                <button className="rounded-full text-black  bg-white  px-8 py-2 border border-black">
-                  Checkout
-                </button>
-              </Link>
-            </div>
+          <hr />
+          <div className="mt-4 flex justify-around mx-auto gap-4">
+            <Link href="/cart">
+              <button className="rounded-full text-black  bg-white  px-8 py-2 border border-black">
+                View Cart
+              </button>
+            </Link>
           </div>
         </div>
-
         <button
           onClick={toggleCart}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
@@ -104,4 +89,4 @@ function ShoppingCart() {
   );
 }
 
-export default ShoppingCart;
+export default WishList;

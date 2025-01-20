@@ -24,18 +24,19 @@ export interface IProduct {
   isFeaturedProduct: boolean;
   stockLevel: number;
   category: string;
-}
-
-export interface IBlog {
-  id: string;
-  title: string;
-  readTime: string;
-  date: string;
-  image: StaticImageData;
+  images: { url: string }[];
 }
 
 export interface ICartStore {
   cart: ICart[];
+  wishList: IWishList[];
+  addToWishList: (newItem: {
+    id: string;
+    name: string;
+    imagePath: string;
+    price: string;
+  }) => void;
+  removeFromWishList: (itemId: string) => void;
   addToCart: (newItem: {
     id: string;
     name: string;
@@ -67,4 +68,21 @@ export interface ICart {
   productStock: number;
   productSize: string;
   productColor: string;
+}
+export interface IWishList {
+  id: string;
+  userId: string;
+  productId: string;
+  productTitle: string;
+  productImage: string;
+  productPrice: number;
+}
+export interface IBlogPost {
+  _id: string;
+  title: string; // The title of the blog post
+  author: string; // The author of the blog post
+  publishedAt: string; // The publication date in ISO format
+  category: string; // The category of the blog post
+  excerpt: string; // A short summary of the blog post
+  imageUrl: string; // The image object for the blog post
 }

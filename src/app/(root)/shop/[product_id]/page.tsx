@@ -1,6 +1,5 @@
 import ProductClient from "./ProductClient";
 import Wrapper from "@/components/shared/Wrapper";
-import ProductDetails from "./ProductDetail";
 import RelatedProduct from "./RelatedProduct";
 import { getProductsFromSanity } from "@/lib/FetchProducts";
 import { IProduct } from "@/types/types";
@@ -23,7 +22,6 @@ const ProductPage = async ({ params }: { params: { product_id: string } }) => {
       <Wrapper>
         <div className="py-20">
           <ProductClient product={product} />
-          <ProductDetails />
         </div>
       </Wrapper>
       <div className="border-t">

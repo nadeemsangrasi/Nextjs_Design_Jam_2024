@@ -1,13 +1,15 @@
 "use client";
-import Image from "next/image";
+
 import React from "react";
 import Link from "next/link";
 import Wrapper from "../shared/Wrapper";
-import { IIcons, ILinks } from "@/types/types";
-import { icons, links } from "@/data/data";
+import { ILinks } from "@/types/types";
+import { links } from "@/data/data";
 import SideBar from "../shared/SideBar";
 import ShoppingCart from "../shared/CartSideBar";
 import { UserButton, useUser } from "@clerk/nextjs";
+import WishList from "../shared/WishList";
+import { LogIn, LogOut } from "lucide-react";
 
 const Header = () => {
   const { isSignedIn } = useUser();
@@ -29,16 +31,17 @@ const Header = () => {
                 {l.label}
               </Link>
             ))}
-            {!isSignedIn && <Link href={"/sign-in"}>Sign in</Link>}
           </nav>
           <div className="hidden lg:flex items-center  gap-x-[2rem]">
-            {icons.map((myIcon: IIcons) => (
-              <Link key={myIcon.link} href={myIcon.link}>
-                <Image src={myIcon.icon} alt="header-icon" />
-              </Link>
-            ))}
+            <WishList />
             <ShoppingCart />
-            <UserButton />
+            {!isSignedIn ? (
+              <Link href={"/sign-in"}>
+                <LogIn />
+              </Link>
+            ) : (
+              <UserButton />
+            )}
           </div>
         </header>
       </Wrapper>

@@ -9,7 +9,10 @@ const OurTopSection = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   useEffect(() => {
     getProductsFromSanity().then((data) => {
-      setProducts(data);
+      const feturedProducts = data.filter(
+        (product: IProduct) => product.isFeaturedProduct
+      );
+      setProducts(feturedProducts);
     });
   }, []);
   return (
@@ -25,7 +28,7 @@ const OurTopSection = () => {
       </div>
       <div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center ">
-          {products.slice(4, 8).map((product: IProduct, index: number) => (
+          {products.map((product: IProduct, index: number) => (
             <Product key={index} product={product} />
           ))}
         </div>

@@ -2,10 +2,10 @@ import Link from "next/link";
 
 import img from "@/assets/icons/Meubel House_Logos-05.png";
 import Image from "next/image";
-import FilterBar from "./FilterBar";
+
 export default function ShopHero({ label }: { label: string }) {
   return (
-    <div className="flex min-h-screen flex-col overflow-hidden pt-5 max-w-screen-2xl mx-auto">
+    <div className="flex max-h-screen flex-col overflow-hidden pt-5 max-w-screen-2xl mx-auto">
       {/* Hero Section */}
       <div className="relative  w-full ">
         <div className="hero"></div>
@@ -26,8 +26,6 @@ export default function ShopHero({ label }: { label: string }) {
           </nav>
         </div>
       </div>
-
-      <FilterBar />
     </div>
   );
 }

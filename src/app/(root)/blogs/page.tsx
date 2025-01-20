@@ -2,7 +2,6 @@ import SectionHeader from "@/components/shared/SectionHeader";
 import React from "react";
 import Blog from "./Blog";
 import FeatureSection from "@/components/shared/FeatureSection";
-import Pagination from "../shop/Pagination";
 
 const BlogsPage = () => {
   return (
@@ -10,7 +9,7 @@ const BlogsPage = () => {
       <SectionHeader label="Blogs" url="/blogs" />
 
       <Blog />
-      <Pagination />
+
       <div className="pb-8">
         <FeatureSection />
       </div>

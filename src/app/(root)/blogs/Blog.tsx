@@ -1,79 +1,64 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import img1 from "@/assets/images/blog/Rectangle 68.png";
-
 import user from "@/assets/images/blog/Vector (8).png";
 import img4 from "@/assets/images/blog/Vector (9).png";
 import calender from "@/assets/images/blog/Vector (10).png";
-
 import Image from "next/image";
 import Link from "next/link";
+import { getBlogsFromSanity } from "@/lib/FetchBlogs";
+import { IBlogPost } from "@/types/types";
 const Blog = () => {
+  const [blogs, setBlogs] = useState<IBlogPost[]>();
+
+  useEffect(() => {
+    const fetchBlogData = () => {
+      getBlogsFromSanity().then((data) => {
+        setBlogs(data);
+      });
+    };
+    fetchBlogData();
+  }, []);
+
   return (
     <div className="  px-4 md:px-8 ">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="md:col-span-3 space-y-8">
-          <div className="bg-white  ">
-            <Image src={img1} alt="Blog post 1" className="w-full " />
-            <div className="p-6">
-              <div className="text-sm text-gray-500 flex items-center space-x-4 flex-wrap gap-2">
-                <span className="flex items-center gap-2">
-                  <Image src={user} alt="user image" /> Admin
-                </span>
-                <span className="flex items-center gap-2">
-                  <Image src={calender} alt="calender image" /> i 16 Oct 2022
-                </span>
-                <span className="flex items-center gap-2">
-                  <Image src={img4} alt=" image" /> Handmade
-                </span>
+          {blogs?.map((blog: IBlogPost) => (
+            <div className="bg-white  " key={blog._id}>
+              <Image
+                src={blog.imageUrl}
+                height={1000}
+                width={1000}
+                alt="Blog post 1"
+                className="w-[800px] h-[600px]"
+              />
+              <div className="p-6">
+                <div className="text-sm text-gray-500 flex items-center space-x-4 flex-wrap gap-2">
+                  <span className="flex items-center gap-2">
+                    <Image src={user} alt="user image" /> {blog.author}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Image src={calender} alt="calender image" />{" "}
+                    {blog.publishedAt.split("T")[1].split(".")[0]}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Image src={img4} alt=" image" /> {blog.category}
+                  </span>
+                </div>
+                <h2 className="text-xl font-semibold text-gray-800 mt-4">
+                  {blog.title}
+                </h2>
+                <p className="text-gray-600 mt-2">{blog.excerpt}</p>
+                <Link
+                  href="#"
+                  className="mt-4 inline-block underline underline-offset-[15px] font-medium text-xl md:text-2xl"
+                >
+                  Read more
+                </Link>
               </div>
-              <h2 className="text-xl font-semibold text-gray-800 mt-4">
-                Going all-in with millennial design
-              </h2>
-              <p className="text-gray-600 mt-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <Link
-                href="#"
-                className="mt-4 inline-block underline underline-offset-[15px] font-medium text-xl md:text-2xl"
-              >
-                Read more
-              </Link>
             </div>
-          </div>
-          <div className="bg-white  ">
-            <Image src={img1} alt="Blog post 1" className="w-full " />
-            <div className="p-6">
-              <div className="text-sm text-gray-500 flex items-center space-x-4 flex-wrap gap-2">
-                <span className="flex items-center gap-2">
-                  <Image src={user} alt="user image" /> Admin
-                </span>
-                <span className="flex items-center gap-2">
-                  <Image src={calender} alt="calender image" /> i 16 Oct 2022
-                </span>
-                <span className="flex items-center gap-2">
-                  <Image src={img4} alt=" image" /> Handmade
-                </span>
-              </div>
-              <h2 className="text-xl font-semibold text-gray-800 mt-4">
-                Going all-in with millennial design
-              </h2>
-              <p className="text-gray-600 mt-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <Link
-                href="#"
-                className="mt-4 inline-block underline underline-offset-[15px] font-medium text-xl md:text-2xl"
-              >
-                Read more
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Sidebar Section */}

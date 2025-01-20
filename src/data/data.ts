@@ -18,16 +18,7 @@ import img10 from "@/assets/images/shop/Reclaimed teak Sideboard 1.png";
 import img11 from "@/assets/images/shop/Round coffee table_color 2 1.png";
 import img12 from "@/assets/images/shop/SJP_0825  1.png";
 
-import icon1 from "@/assets/icons/Vector (1).png";
-import icon2 from "@/assets/icons/Vector (2).png";
-import icon3 from "@/assets/icons/Vector (3).png";
-
-import { IBlog, IIcons, ILinks, IProduct } from "@/types/types";
-export const icons: IIcons[] = [
-  { icon: icon3, link: "/account" },
-  { icon: icon2, link: "/" },
-  { icon: icon1, link: "/" },
-];
+import { IIcons, ILinks, IProduct } from "@/types/types";
 
 export const links: ILinks[] = [
   { label: "Home", url: "/" },
@@ -90,29 +81,29 @@ export const links: ILinks[] = [
 //   },
 // ];
 
-export const blogData: IBlog[] = [
-  {
-    id: "1",
-    title: "Going all in with millennial design",
-    image: bImg1,
-    readTime: "3 min",
-    date: "Oct 2022",
-  },
-  {
-    id: "2",
-    title: "Going all in with millennial design",
-    image: bImg2,
-    readTime: "3 min",
-    date: "Oct 2022",
-  },
-  {
-    id: "3",
-    title: "Going all in with millennial design",
-    image: bImg3,
-    readTime: "3 min",
-    date: "Oct 2022",
-  },
-];
+// export const blogData: IBlog[] = [
+//   {
+//     id: "1",
+//     title: "Going all in with millennial design",
+//     image: bImg1,
+//     readTime: "3 min",
+//     date: "Oct 2022",
+//   },
+//   {
+//     id: "2",
+//     title: "Going all in with millennial design",
+//     image: bImg2,
+//     readTime: "3 min",
+//     date: "Oct 2022",
+//   },
+//   {
+//     id: "3",
+//     title: "Going all in with millennial design",
+//     image: bImg3,
+//     readTime: "3 min",
+//     date: "Oct 2022",
+//   },
+// ];
 
 // export const products: IProduct[] = [
 //   {

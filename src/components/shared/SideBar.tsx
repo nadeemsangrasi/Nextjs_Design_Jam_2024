@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { icons, links } from "@/data/data";
+import { links } from "@/data/data";
 import { IIcons, ILinks } from "@/types/types";
 import { Menu } from "lucide-react";
-import Image from "next/image";
 
 import Link from "next/link";
 import ShoppingCart from "./CartSideBar";
+import WishList from "./WishList";
+import { UserButton } from "@clerk/nextjs";
 
 export default function SideBar() {
   return (
@@ -30,12 +31,9 @@ export default function SideBar() {
             ))}
           </nav>
           <div className="flex items-center  gap-10 mt-5 flex-wrap ">
-            {icons.map((myIcon: IIcons) => (
-              <Link key={myIcon.link} href={myIcon.link}>
-                <Image src={myIcon.icon} alt="header-icon" />
-              </Link>
-            ))}
+            <WishList />
             <ShoppingCart />
+            <UserButton />
           </div>
         </div>
       </SheetContent>

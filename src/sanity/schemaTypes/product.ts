@@ -19,7 +19,7 @@ const product = {
       type: "url",
     },
     {
-      name: "price",  
+      name: "price",
       title: "Price",
       type: "number",
     },
@@ -47,6 +47,19 @@ const product = {
       name: "category",
       title: "Category",
       type: "string",
+    },
+    {
+      name: "images",
+      title: "Images",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: {
+            hotspot: true, // Enables image cropping
+          },
+        },
+      ],
     },
   ],
 };

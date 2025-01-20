@@ -1,7 +1,14 @@
 import { SlidersHorizontal } from "lucide-react";
-export default function FilterBar() {
+
+export default function FilterBar({
+  setOrder,
+  setLength,
+}: {
+  setOrder: any;
+  setLength: any;
+}) {
   return (
-    <div className=" px-4 py-6 bg-pink-50 flex flex-wrap items-center justify-between gap-4 ">
+    <div className="px-4 py-6 bg-pink-50 flex flex-wrap items-center justify-between gap-4">
       {/* Left section */}
       <div className="flex items-center gap-4">
         {/* Filter button */}
@@ -52,21 +59,23 @@ export default function FilterBar() {
             type="number"
             className="w-16 border border-gray-300 rounded-md text-center py-1 text-sm"
             defaultValue={16}
+            onChange={(e) => setLength(e.target.value)}
           />
         </div>
 
         {/* Sort by dropdown */}
         <div className="flex items-center gap-2">
           <label htmlFor="sort" className="text-gray-700 text-sm">
-            Short by
+            Sort by
           </label>
           <select
             id="sort"
             className="border border-gray-300 rounded-md py-1 px-2 text-sm bg-white"
+            onChange={(e) => setOrder(e.target.value)}
           >
-            <option>Default</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
+            <option value="default">Default</option>
+            <option value="low-to-high">Price: Low to High</option>
+            <option value="high-to-low">Price: High to Low</option>
           </select>
         </div>
       </div>

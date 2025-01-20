@@ -8,16 +8,11 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function ProductClient({ product }: { product: IProduct }) {
-  const { addToCart } = useCartStore() as ICartStore;
+  const { addToCart, addToWishList } = useCartStore() as ICartStore;
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("L");
   const [selectedColor, setSelectedColor] = useState("purple");
   const [quantity, setQuantity] = useState(1);
-  const [images, setImages] = useState([
-    product.imagePath,
-    product.imagePath,
-    product.imagePath,
-  ]);
 
   return (
     <div className="container mx-auto px-4">
@@ -37,7 +32,7 @@ export default function ProductClient({ product }: { product: IProduct }) {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-[100px,2fr,2fr] gap-4">
         <div className="md:space-y-4 flex lg:flex-col overflow-x-auto gap-4 lg:gap-0">
-          {images.map((img, index) => (
+          {product.images.map((img, index) => (
             <button
               key={index}
               onClick={() => setSelectedImage(index)}
@@ -46,7 +41,7 @@ export default function ProductClient({ product }: { product: IProduct }) {
               }`}
             >
               <Image
-                src={img}
+                src={img.url}
                 alt={`Product view ${index + 1}`}
                 width={100}
                 height={100}
@@ -58,7 +53,7 @@ export default function ProductClient({ product }: { product: IProduct }) {
         <div className="space-y-4">
           <div className="aspect-square bg-[#F9F1E7] rounded-lg p-0">
             <Image
-              src={images[selectedImage]}
+              src={product.images[selectedImage].url}
               alt="Product view"
               className="w-full h-full"
               height={1000}
@@ -163,6 +158,19 @@ export default function ProductClient({ product }: { product: IProduct }) {
             >
               Add To Cart
             </button>
+            <button
+              onClick={() => {
+                addToWishList({
+                  id: product._id,
+                  name: product.name,
+                  imagePath: product.imagePath,
+                  price: product.price,
+                });
+              }}
+              className="px-8 py-2 bg-white text-black border-2 border-black rounded-lg hover:bg-black hover:text-white transition-colors"
+            >
+              Add To Wishlist
+            </button>
           </div>
 
           {/* Product Meta */}
@@ -206,7 +214,17 @@ export default function ProductClient({ product }: { product: IProduct }) {
                 </button>
               </div>
               <button className="pl-20">
-                <Heart className="w-5 h-5 text-red-500" />{" "}
+                <Heart
+                  className="w-5 h-5 text-red-500"
+                  onClick={() => {
+                    addToWishList({
+                      id: product._id,
+                      name: product.name,
+                      imagePath: product.imagePath,
+                      price: product.price,
+                    });
+                  }}
+                />{" "}
               </button>
             </div>
           </div>

@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "next-ecommerce-template-4.vercel.app",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
     ],
   },
 };

@@ -1,5 +1,5 @@
 "use client";
-import { ICart, ICartStore} from "@/types/types";
+import { ICart, ICartStore, IWishList } from "@/types/types";
 import { useUser } from "@clerk/nextjs";
 
 import React, {
@@ -16,6 +16,7 @@ const CartContext = createContext<ICartStore | undefined>(undefined);
 const CartStore: FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user } = useUser();
   const [cart, setCart] = useState<ICart[]>([]);
+  const [wishList, setWishList] = useState<IWishList[]>([]);
   const [totalAmount, setTotalAmount] = useState<number>(0);
 
   // Load cart data from localStorage when component mounts
@@ -31,12 +32,13 @@ const CartStore: FC<{ children: React.ReactNode }> = ({ children }) => {
     loadCart();
   }, [user?.id]); // Only run when user ID changes
 
-  // Update localStorage whenever cart changes
+  // Update localStorage whenever cart and wishlist changes
   useEffect(() => {
     if (user?.id && cart.length > 0) {
       localStorage.setItem(`cart_${user.id}`, JSON.stringify(cart));
+      localStorage.setItem(`wishlist_${user.id}`, JSON.stringify(wishList));
     }
-  }, [cart, user?.id]);
+  }, [cart, user?.id, wishList]);
 
   // Calculate total amount whenever cart changes
   useEffect(() => {
@@ -50,6 +52,50 @@ const CartStore: FC<{ children: React.ReactNode }> = ({ children }) => {
     calculateTotalAmount();
   }, [cart]);
 
+  const addToWishList = async (newItem: {
+    id: string;
+    name: string;
+    imagePath: string;
+    price: string;
+  }) => {
+    try {
+      if (!user?.id) {
+        toast.error("Please login to add items to wishlist");
+        window.location.replace("/sign-in");
+        return;
+      }
+
+      const chrs =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      const nanoId = (len: number) =>
+        [...Array(len)]
+          .map(() => chrs[Math.floor(Math.random() * chrs.length)])
+          .join("");
+      const wishListId = nanoId(10);
+
+      const existingItemIndex = wishList.findIndex(
+        (w) => w.productId === newItem.id
+      );
+
+      if (existingItemIndex !== -1) {
+        toast.success("Item Already in wishlist");
+      } else {
+        const Item: IWishList = {
+          id: wishListId,
+          userId: user.id,
+          productId: newItem.id,
+          productTitle: newItem.name,
+          productImage: newItem.imagePath,
+          productPrice: Number(newItem.price),
+        };
+        setWishList((prevCart) => [...prevCart, Item]);
+        toast.success("Item added to Wishlist");
+      }
+    } catch (error) {
+      console.error("Error adding to WishList:", error);
+      toast.error("Failed to add item to Wishlist");
+    }
+  };
   const addToCart = async (newItem: {
     id: string;
     name: string;
@@ -62,6 +108,7 @@ const CartStore: FC<{ children: React.ReactNode }> = ({ children }) => {
     category: string;
     color: string;
     size: string;
+    images: { url: string }[];
     quantity: number;
   }) => {
     try {
@@ -127,6 +174,26 @@ const CartStore: FC<{ children: React.ReactNode }> = ({ children }) => {
       toast.error("Failed to remove item from cart");
     }
   };
+  const removeFromWishList = async (itemId: string) => {
+    try {
+      if (!user?.id) {
+        toast.error("Please login to remove items from Wishlist");
+        window.location.replace("/sign-in");
+        return;
+      }
+      const updatedWishList = wishList.filter((item) => item.id !== itemId);
+
+      setWishList(updatedWishList);
+      localStorage.setItem(
+        `wishlist_${user.id}`,
+        JSON.stringify(updatedWishList)
+      );
+      toast.success("Item removed from Wishlist");
+    } catch (error) {
+      console.error("Error removing from WishList:", error);
+      toast.error("Failed to remove item from WishList");
+    }
+  };
 
   const handleCartDecrement = async (id: string) => {
     const cartItem = cart.find((item) => item.id === id);
@@ -179,6 +246,9 @@ const CartStore: FC<{ children: React.ReactNode }> = ({ children }) => {
         totalAmount,
         handleCartIncrement,
         handleCartDecrement,
+        wishList,
+        addToWishList,
+        removeFromWishList,
       }}
     >
       {children}

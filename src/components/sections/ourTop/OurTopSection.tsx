@@ -28,9 +28,12 @@ const OurTopSection = () => {
       </div>
       <div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center ">
-          {products?.map((product: IProduct, index: number) => (
-            <Product key={index} product={product} />
-          ))}
+          {products?.map(
+            (product: IProduct, index: number) =>
+              Number(product.stockLevel) > 0 && (
+                <Product key={index} product={product} />
+              )
+          )}
         </div>
       </div>
       <div className="mt-10">

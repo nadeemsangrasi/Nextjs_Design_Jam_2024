@@ -22,9 +22,14 @@ const RelatedProduct = () => {
       </div>
       <div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center ">
-          {products.slice(4, 8).map((product: IProduct, index) => (
-            <Product key={index} product={product} />
-          ))}
+          {products
+            .slice(4, 8)
+            .map(
+              (product: IProduct, index) =>
+                Number(product.stockLevel) > 0 && (
+                  <Product key={index} product={product} />
+                )
+            )}
         </div>
       </div>
       <div className="my-10">

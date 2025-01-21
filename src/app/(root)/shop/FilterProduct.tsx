@@ -25,9 +25,12 @@ const FilterProduct = ({ products }: { products: IProduct[] }) => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center ">
             {sortedProducts
               ?.slice(0, length)
-              ?.map((product: IProduct, index: number) => (
-                <Product key={index} product={product} />
-              ))}
+              ?.map(
+                (product: IProduct, index: number) =>
+                  Number(product.stockLevel) > 0 && (
+                    <Product key={index} product={product} />
+                  )
+              )}
           </div>
         </div>
       </Wrapper>

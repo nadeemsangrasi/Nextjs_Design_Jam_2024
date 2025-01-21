@@ -36,20 +36,20 @@ const Blog = () => {
               <div className="p-6">
                 <div className="text-sm text-gray-500 flex items-center space-x-4 flex-wrap gap-2">
                   <span className="flex items-center gap-2">
-                    <Image src={user} alt="user image" /> {blog.author}
+                    <Image src={user} alt="user image" /> {blog?.author}
                   </span>
                   <span className="flex items-center gap-2">
                     <Image src={calender} alt="calender image" />{" "}
-                    {blog.publishedAt.split("T")[1].split(".")[0]}
+                    {blog?.publishedAt.split("T")[1].split(".")[0]}
                   </span>
                   <span className="flex items-center gap-2">
-                    <Image src={img4} alt=" image" /> {blog.category}
+                    <Image src={img4} alt=" image" /> {blog?.category}
                   </span>
                 </div>
                 <h2 className="text-xl font-semibold text-gray-800 mt-4">
-                  {blog.title}
+                  {blog?.title}
                 </h2>
-                <p className="text-gray-600 mt-2">{blog.excerpt}</p>
+                <p className="text-gray-600 mt-2">{blog?.excerpt}</p>
                 <Link
                   href="#"
                   className="mt-4 inline-block underline underline-offset-[15px] font-medium text-xl md:text-2xl"

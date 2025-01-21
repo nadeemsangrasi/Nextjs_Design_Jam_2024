@@ -17,7 +17,11 @@ export const getProductsFromSanity = async () => {
 }
 `;
 
-  const res = await client.fetch(query);
-
-  return res;
+  try {
+    const res = await client.fetch(query);
+    return res;
+  } catch (error) {
+    console.error("Error fetching products from Sanity:", error);
+    throw new Error("Failed to fetch products from Sanity");
+  }
 };

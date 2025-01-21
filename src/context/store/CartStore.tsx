@@ -131,6 +131,10 @@ const CartStore: FC<{ children: React.ReactNode }> = ({ children }) => {
       );
 
       if (existingItemIndex !== -1) {
+        if (cart[existingItemIndex].quantity >= newItem.stockLevel) {
+          toast.error("Product is out of stock");
+          return;
+        }
         const updatedCart = [...cart];
         updatedCart[existingItemIndex].quantity += newItem.quantity;
         setCart(updatedCart);

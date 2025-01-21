@@ -48,76 +48,57 @@ export const productSchema = {
       title: "Category",
       type: "string",
     },
-  ],
-};
-
-export const orderSchema = {
-  name: "order",
-  title: "Order",
-  type: "document",
-  fields: [
     {
-      name: "customerInfo",
-      title: "Customer Information",
-      type: "object",
-      fields: [
-        {
-          name: "name",
-          title: "Customer Name",
-          type: "string",
-        },
-        {
-          name: "email",
-          title: "Customer Email",
-          type: "string",
-        },
-        {
-          name: "address",
-          title: "Shipping Address",
-          type: "string",
-        },
-      ],
-    },
-    {
-      name: "paymentStatus",
-      title: "Payment Status",
-      type: "string",
-      options: {
-        list: ["paid", "pending", "failed"],
-      },
-    },
-    {
-      name: "productDetails",
-      title: "Product Details",
+      name: "images",
+      title: "Images",
       type: "array",
       of: [
         {
-          type: "object",
-          fields: [
-            {
-              name: "productId",
-              title: "Product ID",
-              type: "reference",
-              to: [{ type: "product" }],
-            },
-            {
-              name: "quantity",
-              title: "Quantity",
-              type: "number",
-            },
-            {
-              name: "price",
-              title: "Price",
-              type: "number",
-            },
-          ],
+          type: "image",
+          options: {
+            hotspot: true,
+          },
         },
       ],
     },
+  ],
+};
+
+export const blogSchema = {
+  name: "blogPost",
+  title: "Blog Post",
+  type: "document",
+  fields: [
     {
-      name: "orderDate",
-      title: "Order Date",
+      name: "title",
+      title: "Title",
+      type: "string",
+    },
+    {
+      name: "author",
+      title: "Author",
+      type: "string",
+    },
+    {
+      name: "publishedAt",
+      title: "Published At",
       type: "datetime",
+    },
+    {
+      name: "category",
+      title: "Category",
+      type: "string",
+    },
+    {
+      name: "excerpt",
+      title: "Excerpt",
+      type: "text",
+      description: "A short summary of the post.",
+    },
+    {
+      name: "image",
+      title: "Image",
+      type: "image",
     },
   ],
 };

@@ -75,7 +75,7 @@ export default function ProductClient({ product }: { product: IProduct }) {
             </div>
             <span className="text-gray-500 text-sm">5 Customer Review</span>
           </div>
-          <div className="text-2xl">Rs. {product.price}</div>
+          <div className="text-2xl">${product.price}</div>
           <p className="text-gray-600 text-sm md:text-base">
             {product.description}
           </p>
@@ -179,6 +179,11 @@ export default function ProductClient({ product }: { product: IProduct }) {
               <span className="text-gray-600">SKU</span>
               <span>:</span>
               <span>SS001</span>
+            </div>
+            <div className="flex gap-2">
+              <span className="text-gray-600">Total Item</span>
+              <span>:</span>
+              <span>{product.stockLevel}</span>
             </div>
             <div className="flex gap-2">
               <span className="text-gray-600">Category</span>

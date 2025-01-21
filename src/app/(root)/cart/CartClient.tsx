@@ -47,7 +47,7 @@ export const Carts = () => {
               </button>
             </div>
           </td>
-          <td className="p-4 text-gray-700">{totalAmount}</td>
+          <td className="p-4 text-gray-700">${totalAmount}</td>
           <td className="p-4">
             <button className="text-red-200">
               <Trash2 onClick={() => removeFromCart(c.id)} />

@@ -12,7 +12,11 @@ export const getBlogsFromSanity = async () => {
 }
 `;
 
-  const res = await client.fetch(query);
-
-  return res;
+  try {
+    const res = await client.fetch(query);
+    return res;
+  } catch (error) {
+    console.error("Error fetching blogs from Sanity:", error);
+    throw new Error("Failed to fetch blogs from Sanity");
+  }
 };

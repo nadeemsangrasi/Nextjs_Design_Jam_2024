@@ -84,7 +84,7 @@ export const POST = async (req: NextRequest) => {
       phone_number_collection: {
         enabled: true,
       },
-      success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/cart?success=1`,
+      success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/tracking?order_id=${order._id}`,
       cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/cart?success=0`,
       metadata: {
         userId: user?.id,

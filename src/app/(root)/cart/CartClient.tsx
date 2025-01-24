@@ -66,6 +66,10 @@ export const SubTotal = () => {
   const { totalAmount, cart } = useCartStore() as ICartStore;
   const { user } = useUser();
   const handleCheckout = async () => {
+    if (!user?.id) {
+      window.location.replace("/sign-in");
+      return;
+    }
     try {
       const response = await axios.post("/api/checkout", {
         carts: cart.map((item: ICart) => {

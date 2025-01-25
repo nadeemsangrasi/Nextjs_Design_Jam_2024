@@ -7,11 +7,10 @@ TC005,Test filter component - pricing high to low and low to high,Apply filter h
 TC006,Test fetching product from API - disconnected internet,Disconnect internet > Attempt to fetch product data,Show error message indicating no internet,Error message displayed correctly,Passed,Medium,-,Handled gracefully
 TC007,Test wishlist functionality,Add product to wishlist > Remove product from wishlist,Products added and removed from wishlist as expected,Wishlist functionality works as intended,Passed,Low,-,Works as expected
 TC008,Test sign-in and sign-up pages,Sign up with valid data > Sign in with same credentials,Sign-up and sign-in work as expected,Sign-in and sign-up functionality passed,Passed,Low,-,Validated successfully
-TC009,Verify application stability in production environment,-,Application runs smoothly without errors,Pass,Pass,Medium,-,Works as expected
-TC010,Test deployment on production server,-,Successful deployment without any interruptions,Pass,Pass,Medium,-,Works as expected
-TC011,Verify Stripe payment webhook functionality,-,Order data is correctly stored in Sanity CMS,Pass,Pass,High,-,Works as expected
-TC012,Validate order refund process via Stripe,-,Refund details are accurately updated in Sanity CMS,Pass,Pass,High,-,Works as expected
-TC013,Measure page load speed in production,-,Page load time is less than 2 seconds,Pass,Pass,Medium,-,Works as expected
-TC014,Test response time of Stripe API in production,-,API response time is less than 500ms,Pass,Pass,Medium,-,No issues found
-TC015,Load test with concurrent users in production environment,-,System handles up to 1000 concurrent users without degradation,Pass,Pass,High,-,No issues found
-TC016,Check for security vulnerabilities in production,-,No vulnerabilities detected during security scan,Pass,Pass,High,-,No issues found
+TC009,Verify application stability in production environment,Live tasted after deployment,Application runs smoothly without errors,Pass,Pass,Medium,-,Works as expected
+TC010,Test deployment on production server,Tested deployment ,Successful deployment without any interruptions,Pass,Pass,Medium,-,Works as expected
+TC011,Verify Stripe payment webhook functionality,Created payment in production ,Order data is correctly stored in Sanity CMS,Pass,Pass,High,-,Works as expected
+TC012,Check for security vulnerabilities in production,Tested security,No vulnerabilities detected during security scan,Pass,Pass,High,-,No issues found
+TC013,Measure page load speed in production,Tested by again and again reloading pages,Page load time is less than 2 seconds,Pass,Pass,Medium,-,Works as expected
+TC014,Test response time of Stripe API in production,Tried multiple requests,API response time is less than 500ms,Pass,Pass,Medium,-,No issues found
+TC015,Load test with concurrent users in production environment,Tried multiple user sign in and sign up,System handles up to 1000 concurrent users without degradation,Pass,Pass,High,-,No issues found

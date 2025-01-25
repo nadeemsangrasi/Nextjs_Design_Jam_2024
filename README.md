@@ -3,7 +3,7 @@
 This project is a fully functional e-commerce web application built during a hackathon hosted by **GIAIC Faculty**. It demonstrates my ability to transform a Figma design into a live, responsive e-commerce platform with advanced features and seamless user experience, all within 24 hours.
 
 ---
-
+ 
 ## Overview
 
 The project includes the following core pages and features:
